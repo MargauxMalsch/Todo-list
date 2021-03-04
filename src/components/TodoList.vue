@@ -1,19 +1,34 @@
 <template>
     <h1>TODO</h1>
     <ul v-for="(task, index) in tasks" :key="(task, index)">
-        <li v-bind:class="{'ok':task.checked}">{{task.description}}</li>
          <input type="checkbox" v-on:click='changement(index)'>
-         <button v-on:click='poubelle(index)'>POUBELLE</button>
+
+        <li v-bind:class="{'ok':task.checked}">{{task.description}}</li>
+        
+         <button v-on:click='poubelle(index)' class="button is-danger is-light">POUBELLE</button>
     </ul>
 </template>
 <style scoped>
 ul{
     display: flex;
     justify-content: center;
+    padding: 7px;
 }
+li{
+    display: flex;
+ align-items: center;
+ padding: 0 2%;
+ font-size: 2em;
+}
+button{
+    margin: 3%;
+}
+
 .ok{
-    color:blue
+    color:palevioletred;
+    text-decoration: line-through;
 }
+
 
 </style>
 
