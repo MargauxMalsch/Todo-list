@@ -1,11 +1,11 @@
 <template>
     <h1>TODO</h1>
     <ul v-for="(task, index) in tasks" :key="(task, index)">
-         <input type="checkbox" v-on:click='changement(index)'>
+         <input type="checkbox" v-on:click='end(index)'>
 
         <li v-bind:class="{'ok':task.checked}">{{task.description}}</li>
         
-         <button v-on:click='poubelle(index)' class="button is-danger is-light">POUBELLE</button>
+         <button v-on:click='dustbin(index)' class="button is-danger is-light">POUBELLE</button>
     </ul>
 </template>
 <style scoped>
@@ -37,11 +37,11 @@ export default {
     name: 'todo-list',
     props: ['tasks'],
     methods: {
-        changement(index){
+        end(index){
 this.$emit('finishTask', index)
         },
-        poubelle(index){
-            this.$emit('poubelleTask' , index)
+        dustbin(index){
+            this.$emit('binTask' , index)
         }
     }
 }

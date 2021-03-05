@@ -7,9 +7,9 @@
             <h2 class="tache" v-else> {{tasks.length}} Tâche</h2>
         </nav>
     <div>
-        <new-todo @newTask="submitTask" @removeAll="poubelleTasks"></new-todo>
+        <new-todo @newTask="submitTask" @removeAll="trashTasks"></new-todo>
         
-        <todo-list :tasks="tasks" @finishTask="finish" @poubelleTask="poubelle"></todo-list>
+        <todo-list :tasks="tasks" @finishTask="finish" @binTask="bin"></todo-list>
 
         
     </div>
@@ -77,19 +77,19 @@ methods: {
     submitTask(task){
 this.tasks.push({description: task, checked:false})
     },
-    finish(tache){
+    finish(job){
         //this.tasks[tache].checked = true
-        if(this.tasks[tache].checked === false){
-            this.tasks[tache].checked = true
+        if(this.tasks[job].checked === false){
+            this.tasks[job].checked = true
         }
         else{
-            this.tasks[tache].checked = false
+            this.tasks[job].checked = false
         }
     },
-    poubelle(bellepou){
-        this.tasks.splice(bellepou, 1)
+    bin(dump){
+        this.tasks.splice(dump, 1)
     },
-    poubelleTasks(){
+    trashTasks(){
         this.tasks.splice(0)
     }
 }
