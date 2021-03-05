@@ -2,6 +2,7 @@
 <div class="form">
   <input v-model="task" class="input is-primary" type="text" placeholder="Ajouter une tâche">
     <button v-on:click='boom' class="button is-success">TRAVAIL</button>
+    <button v-on:click='Allpoubelle' class="button is-danger">ON SUPPRIME TOUS</button>
 </div>
 </template>
 <style scoped>
@@ -28,6 +29,9 @@ export default {
     methods: {
         boom(){
 this.$emit('newTask', this.task)
+        },
+        Allpoubelle(){
+            this.$emit('removeAll')
         }
     }
 }

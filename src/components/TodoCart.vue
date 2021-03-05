@@ -3,10 +3,11 @@
         <nav>
             <h2 class="date"> {{ date }} </h2>
             <h1><strong> VueJs Tutorial TodoList</strong></h1>
-            <h2 class="tache"> {{tasks.length}} Taches</h2>
+            <h2 v-if="tasks.length > 1">{{tasks.length}}Tâches</h2>
+            <h2 class="tache" v-else> {{tasks.length}} Tâche</h2>
         </nav>
     <div>
-        <new-todo @newTask="submitTask"></new-todo>
+        <new-todo @newTask="submitTask" @removeAll="poubelleTasks"></new-todo>
         
         <todo-list :tasks="tasks" @finishTask="finish" @poubelleTask="poubelle"></todo-list>
 
@@ -87,6 +88,9 @@ this.tasks.push({description: task, checked:false})
     },
     poubelle(bellepou){
         this.tasks.splice(bellepou, 1)
+    },
+    poubelleTasks(){
+        this.tasks.splice(0)
     }
 }
 
